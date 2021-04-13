@@ -1,0 +1,27 @@
+#!/bin/bash
+if [[ "$1" == "" ]]
+then
+	echo "Please pass file with code to compile"
+	exit
+fi
+if [[ "$2" == "" && ! -n $IRISINST ]]
+then
+        echo "Please pass the instance name as a second parameter"
+        exit
+fi
+if [[ "$2" == "" ]]
+then
+	instnam=$IRISINST
+else
+	instnam="$2"
+fi
+rout=$(date +%s)
+echo "Cache for UNIX^INT^WNS^^~Format=Cache.S~^RAW" >> "$rout.ro"
+echo "%RO on $(date '+%d %h %Y %H:%m:%S')" >> "$rout.ro"
+echo "R$rout^INT^1^^0" >> "$rout.ro"
+grep -v "^#" "$1" >> "$rout.ro"
+iriscmd "$instnam" "USER" "w \$SYSTEM.OBJ.Load(\"$(pwd)/$rout.ro\",\"ck\")" > /dev/null
+iriscmd "$instnam" "USER" "D ^R$rout"
+iriscmd "$instnam" "USER" "W ##class(%Routine).Delete(\"$rout\")" > /dev/null
+rm -f "$rout.ro"
+
