@@ -8,6 +8,10 @@ PROCESS -
 
 A temporary flat file is created with all the relevant Intersystems routine import headings followed by the code from the passed file. This is then imported into IRIS, run, and then deleted, before finally removing the raw flat file
 
+PREREQUISITES - 
+
+It is assumed that a working version of Intersystems IRIS is installed as as well as iriscmd (attained from here - https://github.com/RamSailopal/iriscmd
+
 PARAMETERS -
 
            First - The name of the raw code file
