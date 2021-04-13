@@ -37,6 +37,11 @@ Example 2:
              S TESTVAR="hello;there;how;are;you"
              W $P(TESTVAR,";",4)
 
-            iriscode testrout.ro "IRIS"
+            chmod o+x testrout.ro
+            ./testrout.ro
             are
 
+INSTALLATION -
+
+            git clone https://github.com/RamSailopal/iriscode.git
+            cp iriscode/iriscode /usr/local/bin
